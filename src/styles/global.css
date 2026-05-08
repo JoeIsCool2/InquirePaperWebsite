@@ -211,6 +211,8 @@ a:hover {
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .icon-tiny {
@@ -224,7 +226,7 @@ a:hover {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.4rem 0.7rem;
+  padding: 0.42rem 0.72rem;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -242,7 +244,7 @@ a:hover {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.4rem 0.7rem;
+  padding: 0.42rem 0.72rem;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -760,7 +762,7 @@ a:hover {
   background: rgba(4, 8, 18, 0.72);
   display: grid;
   place-items: center;
-  padding: 1.25rem;
+  padding: clamp(1rem, 2.4vw, 1.25rem);
   z-index: 50;
 }
 
@@ -771,7 +773,7 @@ a:hover {
   background: var(--color-surface);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: var(--shadow);
-  padding: 1.35rem 1.4rem;
+  padding: clamp(1.1rem, 2.4vw, 1.35rem) clamp(1.1rem, 2.5vw, 1.4rem);
 }
 
 .modal h2 {
@@ -787,7 +789,7 @@ a:hover {
   width: min(360px, 100%);
   background: var(--color-surface);
   border-left: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 1.25rem;
+  padding: clamp(1rem, 2.8vw, 1.25rem);
   z-index: 40;
   box-shadow: -12px 0 40px rgba(0, 0, 0, 0.35);
   display: flex;
@@ -1282,6 +1284,7 @@ a:hover {
   display: flex;
   justify-content: flex-end;
   padding-top: var(--space-sm);
+  margin-top: var(--space-xs);
 }
 
 .scenario-setup {
@@ -1384,6 +1387,9 @@ a:hover {
   padding: var(--space-xl);
   border-radius: var(--radius);
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
 }
 
 .complete-title {
@@ -1430,6 +1436,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
+  margin-top: var(--space-xs);
 }
 
 .modal--wide {
@@ -1487,7 +1494,7 @@ a:hover {
 }
 
 .glossary-row {
-  padding: var(--space-md);
+  padding: calc(var(--space-md) + 0.1rem);
   border-radius: var(--radius-sm);
   scroll-margin-top: 5.5rem;
 }
@@ -1586,4 +1593,33 @@ a.glossary-pill:focus-visible {
 
 .lesson-player-main[inert] {
   user-select: none;
+}
+
+@media (max-width: 900px) {
+  .app-header {
+    align-items: flex-start;
+    gap: 0.85rem;
+  }
+
+  .header-meta {
+    gap: 0.55rem;
+  }
+}
+
+@media (max-width: 720px) {
+  .header-meta {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .goal-pill,
+  .streak-pill {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.64rem;
+  }
+
+  .icon-button {
+    width: 40px;
+    height: 40px;
+  }
 }
