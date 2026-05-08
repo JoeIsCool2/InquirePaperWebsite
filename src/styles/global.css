@@ -509,6 +509,69 @@ a:hover {
   gap: 0.5rem;
 }
 
+.lesson-card {
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.lesson-card--l1-done {
+  border-color: rgba(62, 224, 179, 0.22);
+}
+
+.lesson-link--block {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  text-decoration: none;
+  color: inherit;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+.lesson-link--block:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.lesson-depth-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0 1rem 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.lesson-depth-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--color-ring);
+  padding: 0.25rem 0.45rem;
+  border-radius: 999px;
+  border: 1px solid rgba(122, 217, 255, 0.35);
+  background: rgba(122, 217, 255, 0.06);
+}
+
+.lesson-depth-pill:hover {
+  border-color: rgba(62, 224, 179, 0.45);
+  color: var(--color-primary);
+}
+
+.lesson-depth-pill--done {
+  border-color: rgba(62, 224, 179, 0.45);
+  color: var(--color-primary);
+}
+
+.lesson-depth-pill--locked {
+  color: var(--color-muted);
+  border-color: rgba(255, 255, 255, 0.1);
+  background: transparent;
+  cursor: default;
+}
+
 .lesson-link {
   display: flex;
   align-items: flex-start;

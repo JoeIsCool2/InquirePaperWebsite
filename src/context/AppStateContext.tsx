@@ -9,6 +9,7 @@ import {
 } from 'react'
 import type { AchievementId } from '@/data/achievements'
 import { UNITS } from '@/data/curriculum'
+import { depthKey, l1CompletedMap, type DepthLevel } from '@/data/lessonDepthKeys'
 
 const STORAGE_KEY = 'inquiry_path_v1'
 const LEGACY_STORAGE_KEY = 'duligo_v1'
@@ -18,20 +19,12 @@ type Settings = {
   reducedMotion: boolean
 }
 
-type StoredV1 = {
-  version: 1
-  seenIntro: boolean
-  settings: Settings
-  completedLessons: Record<string, boolean>
-  lastStreakLocalDate: string | null
-  streakCount: number
-}
-
 type Stored = {
-  version: 2
+  version: 3
   seenIntro: boolean
   settings: Settings
-  completedLessons: Record<string, boolean>
+  /** Keys `unitId:lessonId:d1|d2|d3` */
+  lessonDepthComplete: Record<string, boolean>
   lastStreakLocalDate: string | null
   streakCount: number
   achievements: Partial<Record<AchievementId, true>>
@@ -89,28 +82,44 @@ function computeAchievements(
   return out
 }
 
-function normalizeV2(p: Stored, today: string): Stored {
-  let lessonsTodayDate = p.lessonsTodayDate ?? null
-  let lessonsTodayCount = typeof p.lessonsTodayCount === 'number' ? p.lessonsTodayCount : 0
+function migrateToStoredV3(parsed: Record<string, unknown>, today: string): Stored {
+  const lessonDepthComplete: Record<string, boolean> = {}
+
+  const ldc = parsed.lessonDepthComplete as Record<string, boolean> | undefined
+  if (ldc && typeof ldc === 'object') {
+    Object.assign(lessonDepthComplete, ldc)
+  }
+  const legacy = parsed.completedLessons as Record<string, boolean> | undefined
+  if (legacy && typeof legacy === 'object') {
+    for (const [k, v] of Object.entries(legacy)) {
+      if (v) lessonDepthComplete[`${k}:d1`] = true
+    }
+  }
+
+  let lessonsTodayDate = (parsed.lessonsTodayDate as string | null) ?? null
+  let lessonsTodayCount = typeof parsed.lessonsTodayCount === 'number' ? parsed.lessonsTodayCount : 0
   if (lessonsTodayDate !== today) {
     lessonsTodayDate = null
     lessonsTodayCount = 0
   }
-  const completedLessons = p.completedLessons ?? {}
-  const totalXp = typeof p.totalXp === 'number' && Number.isFinite(p.totalXp) ? p.totalXp : 0
+
+  const totalXp = typeof parsed.totalXp === 'number' && Number.isFinite(parsed.totalXp) ? parsed.totalXp : 0
+  const l1 = l1CompletedMap(lessonDepthComplete)
+  const settings = parsed.settings as Settings | undefined
+
   return {
-    version: 2,
-    seenIntro: Boolean(p.seenIntro),
+    version: 3,
+    seenIntro: Boolean(parsed.seenIntro),
     settings: {
-      sound: p.settings?.sound ?? false,
-      reducedMotion: p.settings?.reducedMotion ?? false,
+      sound: settings?.sound ?? false,
+      reducedMotion: settings?.reducedMotion ?? false,
     },
-    completedLessons,
-    lastStreakLocalDate: p.lastStreakLocalDate ?? null,
-    streakCount: typeof p.streakCount === 'number' ? p.streakCount : 0,
+    lessonDepthComplete,
+    lastStreakLocalDate: (parsed.lastStreakLocalDate as string | null) ?? null,
+    streakCount: typeof parsed.streakCount === 'number' ? parsed.streakCount : 0,
     achievements: {
-      ...(p.achievements ?? {}),
-      ...computeAchievements(completedLessons, lessonsTodayCount),
+      ...((parsed.achievements as Partial<Record<AchievementId, true>>) ?? {}),
+      ...computeAchievements(l1, lessonsTodayCount),
     },
     lessonsTodayDate,
     lessonsTodayCount,
@@ -119,29 +128,12 @@ function normalizeV2(p: Stored, today: string): Stored {
 }
 
 function parseRawToStored(raw: string, today: string): Stored | null {
-  const p = JSON.parse(raw) as Stored | StoredV1
-  if (p.version === 2) {
-    return normalizeV2(p as Stored, today)
+  try {
+    const p = JSON.parse(raw) as Record<string, unknown>
+    return migrateToStoredV3(p, today)
+  } catch {
+    return null
   }
-  if (p.version === 1) {
-    const completed = p.completedLessons ?? {}
-    return {
-      version: 2,
-      seenIntro: Boolean(p.seenIntro),
-      settings: {
-        sound: p.settings?.sound ?? false,
-        reducedMotion: p.settings?.reducedMotion ?? false,
-      },
-      completedLessons: completed,
-      lastStreakLocalDate: p.lastStreakLocalDate ?? null,
-      streakCount: typeof p.streakCount === 'number' ? p.streakCount : 0,
-      achievements: computeAchievements(completed, 0),
-      lessonsTodayDate: null,
-      lessonsTodayCount: 0,
-      totalXp: 0,
-    }
-  }
-  return null
 }
 
 function loadStored(): Stored {
@@ -167,10 +159,10 @@ function loadStored(): Stored {
     return stored
   } catch {
     return {
-      version: 2,
+      version: 3,
       seenIntro: false,
       settings: { sound: false, reducedMotion: false },
-      completedLessons: {},
+      lessonDepthComplete: {},
       lastStreakLocalDate: null,
       streakCount: 0,
       achievements: {},
@@ -186,9 +178,10 @@ type AppStateContextValue = {
   setSeenIntro: (v: boolean) => void
   settings: Settings
   setSettings: (patch: Partial<Settings>) => void
-  completedLessons: Record<string, boolean>
+  lessonDepthComplete: Record<string, boolean>
   isLessonComplete: (unitId: string, lessonId: string) => boolean
-  completeLesson: (unitId: string, lessonId: string) => void
+  isDepthComplete: (unitId: string, lessonId: string, depth: DepthLevel) => boolean
+  completeLesson: (unitId: string, lessonId: string, depth: DepthLevel) => void
   addXp: (amount: number) => void
   streakCount: number
   lastStreakLocalDate: string | null
@@ -221,9 +214,15 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     setStored((s) => ({ ...s, settings: { ...s.settings, ...patch } }))
   }, [])
 
+  const isDepthComplete = useCallback(
+    (unitId: string, lessonId: string, depth: DepthLevel) =>
+      Boolean(stored.lessonDepthComplete[depthKey(unitId, lessonId, depth)]),
+    [stored.lessonDepthComplete],
+  )
+
   const isLessonComplete = useCallback(
-    (unitId: string, lessonId: string) => Boolean(stored.completedLessons[`${unitId}:${lessonId}`]),
-    [stored.completedLessons],
+    (unitId: string, lessonId: string) => isDepthComplete(unitId, lessonId, 1),
+    [isDepthComplete],
   )
 
   const addXp = useCallback((amount: number) => {
@@ -234,39 +233,44 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     }))
   }, [])
 
-  const completeLesson = useCallback((unitId: string, lessonId: string) => {
-    const key = `${unitId}:${lessonId}`
+  const completeLesson = useCallback((unitId: string, lessonId: string, depth: DepthLevel) => {
     setStored((s) => {
-      const completedLessons = { ...s.completedLessons, [key]: true }
+      const dk = depthKey(unitId, lessonId, depth)
+      const already = Boolean(s.lessonDepthComplete[dk])
+      const lessonDepthComplete = { ...s.lessonDepthComplete, [dk]: true }
       const today = localDateString()
       let { streakCount, lastStreakLocalDate } = s
-      if (lastStreakLocalDate !== today) {
-        if (lastStreakLocalDate === yesterdayString(today)) {
-          streakCount = Math.max(1, streakCount + 1)
-        } else {
-          streakCount = 1
-        }
-        lastStreakLocalDate = today
-      }
-
       let lessonsTodayCount = s.lessonsTodayCount
       let lessonsTodayDate = s.lessonsTodayDate
-      if (lessonsTodayDate !== today) {
-        lessonsTodayDate = today
-        lessonsTodayCount = 1
-      } else {
-        lessonsTodayCount += 1
+
+      if (depth === 1 && !already) {
+        if (lastStreakLocalDate !== today) {
+          if (lastStreakLocalDate === yesterdayString(today)) {
+            streakCount = Math.max(1, streakCount + 1)
+          } else {
+            streakCount = 1
+          }
+          lastStreakLocalDate = today
+        }
+
+        if (lessonsTodayDate !== today) {
+          lessonsTodayDate = today
+          lessonsTodayCount = 1
+        } else {
+          lessonsTodayCount += 1
+        }
       }
 
+      const l1 = l1CompletedMap(lessonDepthComplete)
       const achievements = {
         ...s.achievements,
-        ...computeAchievements(completedLessons, lessonsTodayCount),
+        ...computeAchievements(l1, lessonsTodayCount),
       }
 
       return {
         ...s,
-        version: 2,
-        completedLessons,
+        version: 3,
+        lessonDepthComplete,
         streakCount,
         lastStreakLocalDate,
         lessonsTodayDate,
@@ -280,23 +284,26 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     (unitId: string) => {
       const unit = UNITS.find((u) => u.id === unitId)
       if (!unit) return 0
-      const done = unit.lessons.filter((l) => stored.completedLessons[`${unitId}:${l.id}`]).length
+      const done = unit.lessons.filter((l) =>
+        Boolean(stored.lessonDepthComplete[depthKey(unitId, l.id, 1)]),
+      ).length
       const total = unit.lessons.length
       if (total === 0) return 0
       return Math.round((done / total) * 5)
     },
-    [stored.completedLessons],
+    [stored.lessonDepthComplete],
   )
 
   const pathProgress = useMemo(() => {
     const total = UNITS.reduce((acc, u) => acc + u.lessons.length, 0)
     const completed = UNITS.reduce(
       (acc, u) =>
-        acc + u.lessons.filter((l) => stored.completedLessons[`${u.id}:${l.id}`]).length,
+        acc +
+        u.lessons.filter((l) => Boolean(stored.lessonDepthComplete[depthKey(u.id, l.id, 1)])).length,
       0,
     )
     return { completed, total }
-  }, [stored.completedLessons])
+  }, [stored.lessonDepthComplete])
 
   const dailyGoalMet = useMemo(() => {
     const today = localDateString()
@@ -309,8 +316,9 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       setSeenIntro,
       settings: stored.settings,
       setSettings,
-      completedLessons: stored.completedLessons,
+      lessonDepthComplete: stored.lessonDepthComplete,
       isLessonComplete,
+      isDepthComplete,
       completeLesson,
       addXp,
       streakCount: stored.streakCount,
@@ -325,7 +333,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     [
       stored.seenIntro,
       stored.settings,
-      stored.completedLessons,
+      stored.lessonDepthComplete,
       stored.streakCount,
       stored.lastStreakLocalDate,
       stored.achievements,
@@ -334,6 +342,7 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       setSeenIntro,
       setSettings,
       isLessonComplete,
+      isDepthComplete,
       completeLesson,
       addXp,
       unitCrownLevel,

@@ -21,8 +21,9 @@ export default function SkillPath() {
               Five units. Crowns 0–5 each.
             </h1>
             <p className="lead">
-              Follow the spine of the inquiry essay: framing, evidence, capability, labor patterns, meaning. Complete lessons
-              to raise each unit’s crown level.
+              Follow the spine of the inquiry essay: framing, evidence, capability, labor patterns, meaning. Each lesson has
+              three depths—Foundations, then Deeper, then Advanced—unlocked in order. Crowns reflect Foundations completion
+              across the unit.
             </p>
           </div>
           <button type="button" className="btn btn-ghost ach-trigger" onClick={() => setAchOpen(true)}>

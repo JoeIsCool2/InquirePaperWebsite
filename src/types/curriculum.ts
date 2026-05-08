@@ -88,13 +88,19 @@ export type LessonStep =
   | TriageStep
   | CedStep
 
+export type LessonDepth = {
+  label: string
+  steps: LessonStep[]
+}
+
 export type Lesson = {
   id: string
   title: string
   blurb: string
   /** Rough session length for UI */
   estimatedMinutes?: number
-  steps: LessonStep[]
+  /** Three stacked passes: Foundations → Deeper → Advanced */
+  depthLevels: [LessonDepth, LessonDepth, LessonDepth]
 }
 
 export type Unit = {

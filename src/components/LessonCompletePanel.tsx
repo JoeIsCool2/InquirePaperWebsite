@@ -1,13 +1,17 @@
 import { Link } from 'react-router-dom'
 import { useAppState } from '@/context/AppStateContext'
+import { lessonPath, type DepthLevel } from '@/data/lessonDepthKeys'
 import { useDialogA11y } from '@/hooks/useDialogA11y'
 import { starsFromMistakes } from '@/utils/lessonScore'
 
 type Props = {
   open: boolean
   unitId: string
+  lessonId: string
   lessonTitle: string
   unitTitle: string
+  depth: DepthLevel
+  depthLabel: string
   mistakes: number
   xpEarned: number
   nextLessonId?: string
@@ -17,8 +21,11 @@ type Props = {
 export default function LessonCompletePanel({
   open,
   unitId,
+  lessonId,
   lessonTitle,
   unitTitle,
+  depth,
+  depthLabel,
   mistakes,
   xpEarned,
   nextLessonId,
@@ -30,6 +37,8 @@ export default function LessonCompletePanel({
   if (!open) return null
 
   const stars = starsFromMistakes(mistakes)
+  const hasNextDepth = depth < 3
+  const nextDepth = (depth + 1) as DepthLevel
 
   return (
     <div ref={containerRef} className="complete-backdrop" onClick={onClose}>
@@ -40,11 +49,13 @@ export default function LessonCompletePanel({
         aria-labelledby="complete-title"
         onClick={(e) => e.stopPropagation()}
       >
-        <p className="kicker">Lesson complete</p>
+        <p className="kicker">Level complete</p>
         <h2 id="complete-title" className="complete-title">
           {lessonTitle}
         </h2>
-        <p className="complete-sub">{unitTitle}</p>
+        <p className="complete-sub">
+          {unitTitle} · {depthLabel}
+        </p>
         <div className="stars-row" aria-label={`${stars} out of 3 stars`}>
           {[1, 2, 3].map((i) => (
             <span key={i} className={'star' + (i <= stars ? ' star--on' : '')} aria-hidden>
@@ -53,21 +64,32 @@ export default function LessonCompletePanel({
           ))}
         </div>
         {xpEarned > 0 ? (
-          <p className="complete-xp">+{xpEarned} XP this lesson</p>
+          <p className="complete-xp">+{xpEarned} XP (Foundations first clear)</p>
+        ) : depth === 1 ? (
+          <p className="complete-xp complete-xp--muted">XP was already earned for Foundations on this lesson.</p>
         ) : (
-          <p className="complete-xp complete-xp--muted">XP was already earned for this lesson.</p>
+          <p className="complete-xp complete-xp--muted">Deeper levels don’t add XP—practice and mastery only.</p>
         )}
         <p className="complete-total-xp">Total XP: {totalXp}</p>
         <p className="complete-hint">
           {mistakes === 0
             ? 'Flawless run—nice focus.'
             : mistakes <= 2
-              ? 'Solid work. Review the feedback and try a crown replay later.'
+              ? 'Solid work. Review the feedback and try another depth or lesson when you’re ready.'
               : 'Keep going—mistakes are part of inquiry.'}
         </p>
         <div className="complete-actions">
-          {nextLessonId ? (
-            <Link className="btn btn-primary" to={`/lesson/${unitId}/${nextLessonId}`} onClick={onClose}>
+          {hasNextDepth ? (
+            <Link
+              className="btn btn-primary"
+              to={lessonPath(unitId, lessonId, nextDepth)}
+              onClick={onClose}
+            >
+              Continue to level {nextDepth}
+            </Link>
+          ) : null}
+          {!hasNextDepth && nextLessonId ? (
+            <Link className="btn btn-primary" to={lessonPath(unitId, nextLessonId, 1)} onClick={onClose}>
               Next lesson
             </Link>
           ) : null}

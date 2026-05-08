@@ -1,6 +1,6 @@
-import type { Unit } from '@/types/curriculum'
+import { mapUnitsRaw, type UnitRaw } from '@/data/buildLessonDepths'
 
-export const UNITS: Unit[] = [
+const UNITS_RAW: UnitRaw[] = [
   {
     id: 'u1',
     title: "What's at stake",
@@ -879,6 +879,8 @@ export const UNITS: Unit[] = [
     ],
   },
 ]
+
+export const UNITS = mapUnitsRaw(UNITS_RAW)
 
 export function getUnit(unitId: string) {
   return UNITS.find((u) => u.id === unitId)
