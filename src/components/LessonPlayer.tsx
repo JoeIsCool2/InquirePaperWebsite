@@ -160,17 +160,6 @@ export default function LessonPlayer({ unit, lesson }: Props) {
           />
         </div>
 
-        <div className="step-dots" aria-hidden>
-          {steps.map((_, i) => (
-            <span
-              key={i}
-              className={
-                'step-dot' + (i === stepIndex ? ' step-dot--active' : '') + (i < stepIndex ? ' step-dot--done' : '')
-              }
-            />
-          ))}
-        </div>
-
         <div className="step-stage" key={step.id}>
           <LessonStepBody step={step} handlers={stepHandlers} />
         </div>

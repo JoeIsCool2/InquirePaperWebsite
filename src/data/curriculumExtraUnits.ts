@@ -20,7 +20,7 @@ export const EXTRA_UNITS: Unit[] = [
             title: 'Three measurement families',
             body:
               'Labor change shows up in employer surveys, government occupational data, and model-based “exposure” scores. Each answers a slightly different question. The essay’s habit is to ask what was counted, for whom, and over what horizon before treating a percentage as fate.',
-            paperRef: 'Cross-cutting: evidence discipline',
+            paperRef: 'Yale Budget Lab; Frey & Osborne / Prestianni / Nexford-style exposure stats (essay habit)',
             glossaryTerms: ['occupational mix'],
           },
           {
@@ -65,7 +65,7 @@ export const EXTRA_UNITS: Unit[] = [
             title: 'Why timelines split experts',
             body:
               'Some sources emphasize near-term hiring freezes or pilot rollouts; others emphasize decade-scale recomposition. The inquiry move is not to pick a vibe—it is to label which timeline a source actually supports.',
-            paperRef: 'Yale-style gradual mix vs headline immediacy',
+            paperRef: 'Yale Budget Lab labor market note; horizon pieces (e.g. Talmage-Rostron / Nexford)',
           },
           {
             id: 's2',
@@ -116,6 +116,14 @@ export const EXTRA_UNITS: Unit[] = [
         blurb: 'Match the claim to the evidence family that best supports it.',
         estimatedMinutes: 7,
         steps: [
+          {
+            id: 't1',
+            type: 'teach',
+            title: 'Same sources, new drill',
+            body:
+              'Level 1 already paired Fishkin’s incentive critique with Yale-style gradualism and ITIF-style snapshots. Here you practice matching those families to claims—so advanced lessons still sound like the same essay, not generic “AI ethics.”',
+            paperRef: 'Fishkin (SparkToro); Yale Budget Lab; Ostertag (ITIF)',
+          },
           {
             id: 's1',
             type: 'triage',
@@ -200,7 +208,7 @@ export const EXTRA_UNITS: Unit[] = [
             title: 'Workflow friction',
             body:
               'A slick demo can hide integration costs: data access, compliance, reliability checks, and manager trust. Labor impacts often track adoption and redesign of workflows—not the first press release.',
-            paperRef: 'Synthesis: institutions mediate tech shocks',
+            paperRef: 'Ostertag (ITIF) snapshots; Yale Budget Lab (pace of mix shifts); essay synthesis',
           },
           {
             id: 's2',
@@ -244,7 +252,7 @@ export const EXTRA_UNITS: Unit[] = [
             title: 'Power inside the org chart',
             body:
               'Tool access can be centralized (IT procurement) or shadow (teams bring their own). Who decides shapes speed, safety, and which roles feel disruption first—often unevenly across sites.',
-            paperRef: 'Distribution theme (Level 2 extension)',
+            paperRef: 'Drago & Laine (TIME); Georgieff & Hyee (Frontiers)—institutions mediate shocks',
           },
           {
             id: 's2',
@@ -281,6 +289,14 @@ export const EXTRA_UNITS: Unit[] = [
         blurb: 'Apply adoption realism to two workplace vignettes.',
         estimatedMinutes: 7,
         steps: [
+          {
+            id: 't1',
+            type: 'teach',
+            title: 'Why demos and payroll diverge',
+            body:
+              'The essay treats Ostertag-style job snapshots and Yale-style gradualism as complements: both warn against inferring instant universal rollout from a slick pilot. Compliance, procurement, and trust stretch timelines.',
+            paperRef: 'Ostertag (ITIF); Yale Budget Lab',
+          },
           {
             id: 's1',
             type: 'scenario',
@@ -359,7 +375,7 @@ export const EXTRA_UNITS: Unit[] = [
             title: 'Skills follow tasks',
             body:
               'If the mix of tasks inside jobs changes, so do the skills markets reward. The essay’s hopeful thread—creativity and care valued more—still depends on training systems, hiring norms, and time.',
-            paperRef: 'Drago & Laine / Georgieff & Hyee themes (extended)',
+            paperRef: 'Georgieff & Hyee (Frontiers, 2022); Drago & Laine (TIME, 2025)',
             glossaryTerms: ['recomposition'],
           },
           {
@@ -382,21 +398,21 @@ export const EXTRA_UNITS: Unit[] = [
             items: [
               {
                 id: 'i1',
-                text: 'Bootcamps report rising demand for prompt-craft and evaluation skills.',
+                text: 'Ostertag (ITIF) tracks AI-related job creation vs displacement in a recent-year snapshot.',
                 bucketId: 'evidence',
               },
               {
                 id: 'i2',
-                text: 'So “digital literacy” may mean judging outputs, not only clicking buttons.',
+                text: 'So “more AI jobs” still leaves open who gets hired, at what wages, and after which training.',
                 bucketId: 'interpretation',
               },
               {
                 id: 'i3',
-                text: 'Training policy is part of a fair transition story.',
+                text: 'The essay treats skills policy as part of transition fairness—not an afterthought.',
                 bucketId: 'claim',
               },
             ],
-            explain: 'Keep evidence (what programs report) separate from interpretation and normative claim.',
+            explain: 'Evidence cites a named source; interpretation connects it to distribution; claim states the essay’s normative emphasis.',
           },
         ],
       },
@@ -412,7 +428,7 @@ export const EXTRA_UNITS: Unit[] = [
             title: 'Cost and access',
             body:
               'If reskilling is expensive and unevenly available, “learn to code” advice can sound fair while functioning as a private tax on displacement. The essay invites readers to notice who bears the burden.',
-            paperRef: 'Distribution & transitions',
+            paperRef: 'Drago & Laine (TIME); Talbot (The New Yorker)—cost, meaning, and who pays',
           },
           {
             id: 's2',
@@ -450,6 +466,14 @@ export const EXTRA_UNITS: Unit[] = [
         blurb: 'Certificates, portfolios, and what employers trust.',
         estimatedMinutes: 7,
         steps: [
+          {
+            id: 't1',
+            type: 'teach',
+            title: 'Credentials vs gatekeeping',
+            body:
+              'Drago & Laine argue automating routine work could elevate creativity and care—if institutions catch up. Georgieff & Hyee emphasize shifting task demand. Neither paper promises that a certificate alone moves someone across hiring gates.',
+            paperRef: 'Drago & Laine (TIME); Georgieff & Hyee (Frontiers)',
+          },
           {
             id: 's1',
             type: 'scenario',
@@ -524,7 +548,7 @@ export const EXTRA_UNITS: Unit[] = [
             title: 'The averaging trap',
             body:
               'National productivity can rise while specific communities feel layoffs or stagnant wages. Inquiry writing names the scale of the claim: whose data, which window, which group?',
-            paperRef: 'Equity-of-transition theme',
+            paperRef: 'Ostertag (ITIF); Yale Budget Lab—averages vs localized pain',
           },
           {
             id: 's2',
@@ -569,7 +593,7 @@ export const EXTRA_UNITS: Unit[] = [
             title: 'Design choices are labor choices',
             body:
               'Workflow automation is not only an engineering problem. It is also who gets consulted, what “success” means, and what happens when monitoring tools reshape pace and stress.',
-            paperRef: 'Governance extension (preview Level 3)',
+            paperRef: 'Talbot (The New Yorker); Urwin (Built In)—task quality, resilience, and control',
           },
           {
             id: 's2',
@@ -609,6 +633,14 @@ export const EXTRA_UNITS: Unit[] = [
         blurb: 'Connect claims about fairness to the right evidence.',
         estimatedMinutes: 7,
         steps: [
+          {
+            id: 't1',
+            type: 'teach',
+            title: 'Fairness claims need the right evidence family',
+            body:
+              'Fishkin explains why inevitability stories can be strategic. Georgieff & Hyee describe cross-country shifts toward reasoning and social tasks. Ostertag offers quantitative snapshots. Each supports different sub-claims—triage keeps them straight.',
+            paperRef: 'Fishkin (SparkToro); Georgieff & Hyee (Frontiers); Ostertag (ITIF)',
+          },
           {
             id: 's1',
             type: 'triage',
@@ -693,7 +725,7 @@ export const EXTRA_UNITS: Unit[] = [
             title: 'Alarm phrases (not automatic lies)',
             body:
               'Phrases like “inevitable,” “everyone will,” “human-level,” or “this changes everything tomorrow” can be rhetorical heat. The inquiry habit is to ask what would falsify the claim and what was measured.',
-            paperRef: 'Fishkin + essay caution',
+            paperRef: 'Fishkin (SparkToro, 2025)',
             glossaryTerms: ['hype'],
           },
           {
@@ -737,7 +769,7 @@ export const EXTRA_UNITS: Unit[] = [
             title: 'Narrative toolbox',
             body:
               'A jobs-created snapshot and a gradual occupational-mix story answer different anxieties. Strong writers don’t mash them into one slogan—they assign each to its proper sub-claim.',
-            paperRef: 'ITIF + Yale pairing (Level 2 synthesis)',
+            paperRef: 'Ostertag (ITIF, 2025); Yale Budget Lab labor market note',
             glossaryTerms: ['occupational mix'],
           },
           {
@@ -786,6 +818,14 @@ export const EXTRA_UNITS: Unit[] = [
         blurb: 'Hold multiple true ideas without collapsing them.',
         estimatedMinutes: 8,
         steps: [
+          {
+            id: 't1',
+            type: 'teach',
+            title: 'Hold the threads the essay holds',
+            body:
+              'Fishkin warns about vendor theater; Yale cautions on speed of occupational mix change; The PyCoach reporting raises autonomy in training loops; Urwin’s lists pattern exposure. A capstone lesson should sound like all of those can be partially true at once.',
+            paperRef: 'Fishkin (SparkToro); Yale Budget Lab; The PyCoach / Medium; Urwin (Built In)',
+          },
           {
             id: 's1',
             type: 'scenario',
@@ -873,7 +913,7 @@ export const EXTRA_UNITS: Unit[] = [
             title: 'Steelmanning',
             body:
               'To steelman is to state the strongest version of a counterargument before replying. A serious slow-change view notes procurement, regulation, and habit—why workplaces do not flip overnight.',
-            paperRef: 'Yale gradualism + adoption friction (Level 3)',
+            paperRef: 'Yale Budget Lab; Ostertag (ITIF)—slow adoption vs headline speed',
           },
           {
             id: 's2',
@@ -916,7 +956,7 @@ export const EXTRA_UNITS: Unit[] = [
             title: 'Scope honesty',
             body:
               'A single essay can map sources, name patterns, and propose norms for careful language. It cannot replace labor economics as a field, predict your city’s hiring, or cover every industry equally.',
-            paperRef: 'Meta: inquiry boundaries',
+            paperRef: 'Essay scope vs Fishkin / ITIF / Yale / Urwin corpus',
           },
           {
             id: 's2',
@@ -958,6 +998,14 @@ export const EXTRA_UNITS: Unit[] = [
         blurb: 'Match replies to the objection they actually answer.',
         estimatedMinutes: 7,
         steps: [
+          {
+            id: 't1',
+            type: 'teach',
+            title: 'Patterns, not magic immunity',
+            body:
+              'Urwin summarizes roles often discussed as exposed vs resilient—as starting points, not fate. The PyCoach-style reporting on self-training reminds readers that autonomy can grow unevenly. Triage tests whether your reply matches that nuance.',
+            paperRef: 'Urwin (Built In); The PyCoach / Medium',
+          },
           {
             id: 's1',
             type: 'triage',
@@ -1032,7 +1080,7 @@ export const EXTRA_UNITS: Unit[] = [
             title: 'Broken telephone',
             body:
               'Each hop can sharpen verbs, drop confidence intervals, and lose definitions. Inquiry readers trace back: what did the original measure actually say?',
-            paperRef: 'Evidence discipline (Level 3)',
+            paperRef: 'Prestianni / Nexford / Frey & Osborne exposure chains—trace definitions',
           },
           {
             id: 's2',
@@ -1075,7 +1123,7 @@ export const EXTRA_UNITS: Unit[] = [
             title: 'Chart hygiene',
             body:
               'Truncated axes, dual axes, and cherry-picked time windows can make small moves look cosmic. The essay’s skill set includes asking what a chart hides—not assuming malice, but checking.',
-            paperRef: 'Reading quant rhetoric',
+            paperRef: 'Ostertag (ITIF); Yale Budget Lab—reading ratios and charts carefully',
           },
           {
             id: 's2',
@@ -1117,6 +1165,14 @@ export const EXTRA_UNITS: Unit[] = [
         estimatedMinutes: 7,
         steps: [
           {
+            id: 't1',
+            type: 'teach',
+            title: 'Fishkin vs Yale (again, on purpose)',
+            body:
+              'Fishkin names incentive dynamics behind “replace all jobs” rhetoric. Yale names gradual occupational mix history. Both are in your bibliography; triage is knowing which claim each supports.',
+            paperRef: 'Fishkin (SparkToro); Yale Budget Lab',
+          },
+          {
             id: 's1',
             type: 'triage',
             claim: 'Incentive structures reward attention-grabbing AI stories.',
@@ -1124,8 +1180,8 @@ export const EXTRA_UNITS: Unit[] = [
             sources: [
               {
                 id: 'fish',
-                label: 'Incentive critique',
-                description: 'Discusses marketing and attention dynamics around AI narratives.',
+                label: 'Fishkin (SparkToro)',
+                description: 'Marketing and attention dynamics around AI narratives.',
               },
               {
                 id: 'yale',
@@ -1198,7 +1254,7 @@ export const EXTRA_UNITS: Unit[] = [
             title: 'Why governance is a jobs issue',
             body:
               'When models influence hiring, benefits, or performance metrics, mistakes become livelihood issues. Governance is not an abstract AI-ethics sidebar—it is workplace reality.',
-            paperRef: 'Extension: accountability',
+            paperRef: 'Cancer Research Institute (Staff, 2025)—high-stakes pattern finding',
           },
           {
             id: 's2',
@@ -1241,7 +1297,7 @@ export const EXTRA_UNITS: Unit[] = [
             title: 'Calibrate “autonomy”',
             body:
               'Autonomy is a spectrum: from autocomplete to agents that chain actions. The essay warns against both panic and complacency by keeping the spectrum visible.',
-            paperRef: 'Tool vs autonomy frames (Level 3 recap)',
+            paperRef: 'The PyCoach / Medium; essay tool vs autonomy frames',
             glossaryTerms: ['autonomy'],
           },
           {
@@ -1282,6 +1338,14 @@ export const EXTRA_UNITS: Unit[] = [
         estimatedMinutes: 7,
         steps: [
           {
+            id: 't1',
+            type: 'teach',
+            title: 'Governance in the essay’s labor story',
+            body:
+              'Drago & Laine tie automation of routine work to whether society values creativity and care—and whether policy catches up. Talbot adds moral texture: bad oversight can hollow meaning even when headcount stays flat. Voice and accountability are not optional extras.',
+            paperRef: 'Drago & Laine (TIME); Talbot (The New Yorker)',
+          },
+          {
             id: 's1',
             type: 'triage',
             claim: 'Worker voice can improve rollout safety and fairness.',
@@ -1313,21 +1377,21 @@ export const EXTRA_UNITS: Unit[] = [
             items: [
               {
                 id: 'i1',
-                text: 'EU and U.S. debates propose transparency duties for high-risk uses.',
+                text: 'Drago & Laine argue institutions must adapt if automating routine work is to elevate creativity and care.',
                 bucketId: 'evidence',
               },
               {
                 id: 'i2',
-                text: 'So “deploy first” is not the only norm on the table.',
+                text: 'So “ship the model” without worker input can repeat old harms—even without mass layoffs.',
                 bucketId: 'interpretation',
               },
               {
                 id: 'i3',
-                text: 'Inquiry readers should track governance as labor context.',
+                text: 'The essay treats accountability and voice as part of job quality, not a tech sidebar.',
                 bucketId: 'claim',
               },
             ],
-            explain: 'Separate what legislatures are considering from what you conclude it implies.',
+            explain: 'Evidence attributes a source; interpretation draws a workplace consequence; claim states the essay’s stance.',
           },
           {
             id: 's3',
@@ -1358,6 +1422,14 @@ export const EXTRA_UNITS: Unit[] = [
         blurb: 'Augmentation, metrics, and morale.',
         estimatedMinutes: 6,
         steps: [
+          {
+            id: 't1',
+            type: 'teach',
+            title: 'Messy service work',
+            body:
+              'Talbot describes boredom and suspected meaninglessness at work; Urwin’s Built In synthesis lists roles often discussed as exposed (e.g., customer support) versus more resilient ones. Scenarios below ask you to hold both pattern thinking and humane detail.',
+            paperRef: 'Talbot (The New Yorker); Urwin (Built In)',
+          },
           {
             id: 's1',
             type: 'scenario',
@@ -1416,7 +1488,7 @@ export const EXTRA_UNITS: Unit[] = [
             title: 'Speed vs verification',
             body:
               'Newsrooms face traffic incentives. AI tools can accelerate drafting—and also amplify errors if verification steps shrink. The inquiry move is to protect triage: which facts are anchored where?',
-            paperRef: 'Fishkin + headline chain (applied)',
+            paperRef: 'Fishkin (SparkToro); Ostertag (ITIF) / Prestianni-style headline chains',
             glossaryTerms: ['hype'],
           },
           {
@@ -1469,6 +1541,14 @@ export const EXTRA_UNITS: Unit[] = [
         blurb: 'Two cases, disciplined synthesis.',
         estimatedMinutes: 8,
         steps: [
+          {
+            id: 't1',
+            type: 'teach',
+            title: 'Institutions mediate “average” wins',
+            body:
+              'Georgieff & Hyee emphasize cross-country shifts in task demand; Drago & Laine stress that upside stories still hinge on training and policy. Use that pair when a scenario tempts you to treat a pilot score as universal fairness.',
+            paperRef: 'Georgieff & Hyee (Frontiers); Drago & Laine (TIME)',
+          },
           {
             id: 's1',
             type: 'scenario',
@@ -1540,7 +1620,7 @@ export const EXTRA_UNITS: Unit[] = [
             title: 'Fast doesn’t have to mean sloppy',
             body:
               'Even quick posts can name definitions, link sources, and separate evidence from interpretation. The essay’s reputation is built on habits you can reuse on deadline: triage first, slogan second.',
-            paperRef: 'Meta: reusable inquiry habits',
+            paperRef: 'Fishkin / Yale / ITIF / Urwin habits—compressed',
           },
           {
             id: 's2',
@@ -1578,13 +1658,21 @@ export const EXTRA_UNITS: Unit[] = [
         estimatedMinutes: 7,
         steps: [
           {
+            id: 't1',
+            type: 'teach',
+            title: 'Speed drill, same bibliography',
+            body:
+              'Ostertag gives a quantitative snapshot; Fishkin names hype incentives; Yale cautions on pace. The CED and triage below rehearse those exact moves under time pressure.',
+            paperRef: 'Ostertag (ITIF); Fishkin (SparkToro); Yale Budget Lab',
+          },
+          {
             id: 's1',
             type: 'ced',
             prompt: 'Drill: sort quickly.',
             items: [
               {
                 id: 'i1',
-                text: 'ITIF compares AI-related job creation and displacement for a recent year.',
+                text: 'Ostertag (ITIF) compares AI-related job creation and displacement for a recent year.',
                 bucketId: 'evidence',
               },
               {
@@ -1647,6 +1735,14 @@ export const EXTRA_UNITS: Unit[] = [
         estimatedMinutes: 8,
         steps: [
           {
+            id: 't1',
+            type: 'teach',
+            title: 'Still partners with the Genie',
+            body:
+              'The essay returns to Aladdin’s frame: phenomenal capability still needs human direction. Closing drills echo Drago & Laine’s hope-forward stance, Yale’s humility on pace, and Fishkin’s guardrails against hype.',
+            paperRef: 'Aladdin (Clements & Musker, 1992); Drago & Laine (TIME); Yale Budget Lab; Fishkin (SparkToro)',
+          },
+          {
             id: 's1',
             type: 'scenario',
             setup:
@@ -1686,7 +1782,7 @@ export const EXTRA_UNITS: Unit[] = [
             title: 'What now?',
             body:
               'Return to the essay with vocabulary: augmentation, displacement, recomposition, hype, triage. Pick one source cited there and read it directly. Use C-E-I on a paragraph you find confusing—you’re practicing the same moves this path drilled.',
-            paperRef: 'Closing: partners with the Genie',
+            paperRef: 'Essay conclusion; bibliography in Paper bridge',
             glossaryTerms: ['augmentation', 'displacement', 'recomposition', 'hype', 'triage'],
           },
         ],

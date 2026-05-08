@@ -20,7 +20,7 @@ export const UNITS: Unit[] = [
             title: 'Technology needs people—until it doesn’t',
             body:
               'In the inquiry essay, the Genie is powerful but stuck without a human partner. That mirrors an older story about tech: tools amplify people, but they still need human direction. The essay argues AI is beginning to change that balance—so the urgent social question becomes work: who gains, who loses, and how fast.',
-            paperRef: 'Opening & personal stake (iOS class / eight-month shift)',
+            paperRef: 'Aladdin (Clements & Musker, 1992); opening & personal stake (iOS class / eight-month shift)',
             glossaryTerms: ['augmentation'],
           },
           {
@@ -259,8 +259,8 @@ export const UNITS: Unit[] = [
       {
         id: 'u2-l2',
         title: 'Stats & the internet analogy',
-        blurb: 'Prestianni, Ostertag, and Yale: how to read numbers without overstating them.',
-        estimatedMinutes: 8,
+        blurb: 'Prestianni, Frey & Osborne, Nexford, Ostertag, and Yale: how to read numbers without overstating them.',
+        estimatedMinutes: 10,
         steps: [
           {
             id: 's1',
@@ -270,6 +270,37 @@ export const UNITS: Unit[] = [
               'Prestianni summarizes forecasts that a large share of “current U.S. jobs” could face automation pressure by 2030. The essay stresses wording: “current jobs” is not the same as “every worker unemployed tomorrow.”',
             paperRef: 'Prestianni (National University blog)',
             glossaryTerms: ['automation'],
+          },
+          {
+            id: 's1b',
+            type: 'teach',
+            title: 'Frey & Osborne: “susceptibility,” not a layoff calendar',
+            body:
+              'Frey and Osborne (2017) estimate how susceptible many occupations are to computerisation—a landmark academic framing that shaped later headlines. The essay uses this family of work the same way it reads blogs: as a map of patterns and labels that still needs translation into real adoption, timing, and who is affected—not as a dated firing schedule for named workers.',
+            paperRef: 'Frey & Osborne (2017, Technological Forecasting and Social Change)',
+            glossaryTerms: ['automation', 'occupational mix'],
+          },
+          {
+            id: 's1c',
+            type: 'teach',
+            title: 'Horizon summaries (Nexford)',
+            body:
+              'Talmage-Rostron (Nexford University) synthesizes how analysts discuss AI and jobs across roughly 2023–2030. Pieces like this belong in the same careful-reading bucket as Prestianni-style statistics roundups: useful for what is being claimed and counted, easy to overread as certainty.',
+            paperRef: 'Talmage-Rostron (Nexford University)',
+          },
+          {
+            id: 's1d',
+            type: 'mcq',
+            prompt: 'A proportional reading of Frey & Osborne–style “susceptibility” research is:',
+            options: [
+              { id: 'a', label: 'It ranks patterns in occupational labels and tasks—not individual destiny' },
+              { id: 'b', label: 'It proves every listed worker loses their job on the same date' },
+              { id: 'c', label: 'It replaces the need for firm-level or country-level data' },
+            ],
+            correctId: 'a',
+            explain:
+              'Susceptibility studies inform structure and debate; they do not replace adoption evidence or distribution questions.',
+            glossaryTerms: ['occupational mix'],
           },
           {
             id: 's2',
@@ -332,8 +363,8 @@ export const UNITS: Unit[] = [
       {
         id: 'u2-l3',
         title: 'Source triage',
-        blurb: 'Match evidence to the claim it best supports.',
-        estimatedMinutes: 7,
+        blurb: 'Match evidence to the claim it best supports—including susceptibility vs hype.',
+        estimatedMinutes: 8,
         steps: [
           {
             id: 's1',
@@ -341,7 +372,7 @@ export const UNITS: Unit[] = [
             title: 'Why triage matters',
             body:
               'Inquiry is not “collect quotes.” It is choosing which sources best justify which parts of your argument—especially when sources disagree or measure different things.',
-            paperRef: 'Evidence use across Fishkin / ITIF / Yale',
+            paperRef: 'Evidence use across Fishkin / Frey & Osborne / Prestianni–Nexford summaries / ITIF / Yale',
           },
           {
             id: 's2',
@@ -368,6 +399,33 @@ export const UNITS: Unit[] = [
             correctSourceId: 'fishkin',
             explain:
               'Fishkin’s piece targets rhetorical and marketing dynamics. ITIF and Yale help with different sub-claims about measured change.',
+          },
+          {
+            id: 's2b',
+            type: 'triage',
+            claim:
+              '“Jobs at risk” percentages tied to occupational susceptibility still need definition discipline—not instant panic timelines.',
+            prompt: 'Which source family anchors that caution in the essay companion?',
+            sources: [
+              {
+                id: 'frey',
+                label: 'Frey & Osborne (2017)',
+                description: 'Susceptibility of occupations to computerisation—patterns, not individual layoff dates.',
+              },
+              {
+                id: 'fishkin',
+                label: 'Fishkin (SparkToro)',
+                description: 'Tech-exec marketing and hype dynamics.',
+              },
+              {
+                id: 'talbot',
+                label: 'Talbot (The New Yorker)',
+                description: 'Meaning and boredom at work.',
+              },
+            ],
+            correctSourceId: 'frey',
+            explain:
+              'The claim is about how to read susceptibility statistics; Frey & Osborne is the classic academic reference for that framing.',
           },
           {
             id: 's3',
@@ -477,7 +535,7 @@ export const UNITS: Unit[] = [
             title: 'What CRI emphasizes now',
             body:
               'The Cancer Research Institute describes AI helping process data, spot patterns, and support predictions—especially around detection and, prospectively, prevention research. That’s meaningful, but it’s not the same as “AI cured cancer.”',
-            paperRef: 'Cancer Research Institute blog overview',
+            paperRef: 'Cancer Research Institute (Staff, 2025) blog overview',
           },
           {
             id: 's2',

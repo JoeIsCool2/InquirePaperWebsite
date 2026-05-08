@@ -10,7 +10,8 @@ const SECTIONS = [
   },
   {
     title: 'Evidence & debate',
-    map: 'Fishkin on hype vs tool; Prestianni headline automation forecasts; Ostertag snapshot of gains vs losses; Yale Budget Lab internet analogy.',
+    map:
+      'Fishkin on hype vs tool; Prestianni and Nexford-style horizon statistics; Frey & Osborne on occupational susceptibility (read with definition discipline); Ostertag snapshot of gains vs losses; Yale Budget Lab internet analogy.',
   },
   {
     title: 'Capability curve',

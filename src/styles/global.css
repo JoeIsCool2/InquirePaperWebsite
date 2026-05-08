@@ -1306,6 +1306,13 @@ a:hover {
   gap: var(--space-md);
 }
 
+.lesson-player-main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding: var(--space-sm) clamp(0.6rem, 1.8vw, 1rem) var(--space-md);
+}
+
 .sticky-lesson-bar {
   position: sticky;
   top: var(--space-sm);
@@ -1337,41 +1344,21 @@ a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 0.15rem;
 }
 
 .progress-track--lesson {
   height: 12px;
+  margin-bottom: 0.35rem;
 }
 
 .progress-fill--spring {
   transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.step-dots {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.step-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.step-dot--active {
-  background: var(--color-primary);
-  transform: scale(1.35);
-}
-
-.step-dot--done {
-  background: rgba(62, 224, 179, 0.45);
-}
-
 .step-stage {
   animation: stepIn 0.35s ease both;
+  margin-top: 0.2rem;
 }
 
 @keyframes stepIn {
@@ -1388,8 +1375,8 @@ a:hover {
 .lesson-footer {
   display: flex;
   justify-content: flex-end;
-  padding-top: var(--space-sm);
-  margin-top: var(--space-xs);
+  padding-top: var(--space-md);
+  margin-top: var(--space-sm);
 }
 
 .scenario-setup {

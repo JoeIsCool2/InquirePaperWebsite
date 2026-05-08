@@ -1,4 +1,7 @@
-/** Full references aligned with the inquiry essay companion (APA-style, for drawer). */
+/**
+ * Full references aligned with the inquiry essay companion (APA-style, for drawer).
+ * Coverage map: see `essaySourceMap.ts` (each entry should appear in at least one lesson).
+ */
 export const REFERENCES = [
   'Clements, R., & Musker, J. (Directors). (1992). Aladdin [Film]. Walt Disney Feature Animation.',
   'Drago, L., & Laine, R. (2025, May 30). What happens when AI replaces workers? TIME. https://time.com/7289692/when-ai-replaces-workers/',
