@@ -62,7 +62,8 @@ export default function PaperBridge() {
       <div className="card glass">
         <h2>Section map</h2>
         <p className="lead" style={{ marginTop: 0 }}>
-          Each row matches a movement of the essay; Inquiry Path units follow the same spine.
+          Each row matches a movement of the essay; Level 1 of the skill path follows this spine. Levels 2–3 extend the same
+          themes with deeper practice (unlocked as you finish the prior level).
         </p>
         <ul style={{ margin: 0, paddingLeft: '1.1rem', color: 'var(--color-muted)' }}>
           {SECTIONS.map((s) => (

@@ -6,7 +6,7 @@ import { useAppState } from '@/context/AppStateContext'
 export default function UnitPage() {
   const { unitId } = useParams()
   const unit = unitId ? getUnit(unitId) : undefined
-  const { isLessonComplete, unitCrownLevel } = useAppState()
+  const { isLessonComplete, unitCrownLevel, isUnitAccessible } = useAppState()
 
   if (!unit) {
     return (
@@ -15,6 +15,30 @@ export default function UnitPage() {
         <Link className="btn btn-ghost" to="/path">
           Back to path
         </Link>
+      </div>
+    )
+  }
+
+  if (!isUnitAccessible(unit.id)) {
+    return (
+      <div>
+        <nav className="breadcrumb-nav">
+          <Link className="nav-link" to="/path">
+            ← Path
+          </Link>
+        </nav>
+        <div className="card glass level-gate-card">
+          <p className="kicker">Level locked</p>
+          <h1>This unit is not available yet</h1>
+          <p className="lead">
+            {unit.level === 2
+              ? 'Complete every lesson in Level 1 to unlock Level 2.'
+              : 'Complete every lesson in Level 2 to unlock Level 3.'}
+          </p>
+          <Link className="btn btn-primary" to="/path">
+            Back to skill path
+          </Link>
+        </div>
       </div>
     )
   }

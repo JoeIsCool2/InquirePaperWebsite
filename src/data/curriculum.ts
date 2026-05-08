@@ -1,8 +1,10 @@
 import type { Unit } from '@/types/curriculum'
+import { EXTRA_UNITS } from '@/data/curriculumExtraUnits'
 
 export const UNITS: Unit[] = [
   {
     id: 'u1',
+    level: 1,
     title: "What's at stake",
     subtitle: 'Framing the question: tools, dependence, and why jobs matter now',
     lessons: [
@@ -205,6 +207,7 @@ export const UNITS: Unit[] = [
   },
   {
     id: 'u2',
+    level: 1,
     title: 'Claims & evidence',
     subtitle: 'Marketing vs research, headline stats, and historical analogy',
     lessons: [
@@ -410,6 +413,7 @@ export const UNITS: Unit[] = [
   },
   {
     id: 'u3',
+    level: 1,
     title: 'Capability curve',
     subtitle: 'When training loops change—and what cancer research really shows',
     lessons: [
@@ -580,6 +584,7 @@ export const UNITS: Unit[] = [
   },
   {
     id: 'u4',
+    level: 1,
     title: 'Labor patterns',
     subtitle: 'Which jobs look exposed—and what patterns say (the synthesis)',
     lessons: [
@@ -733,6 +738,7 @@ export const UNITS: Unit[] = [
   },
   {
     id: 'u5',
+    level: 1,
     title: 'Meaning & society',
     subtitle: 'Cross-country evidence, TIME essay, and the closing frame',
     lessons: [
@@ -878,6 +884,7 @@ export const UNITS: Unit[] = [
       },
     ],
   },
+  ...EXTRA_UNITS,
 ]
 
 export function getUnit(unitId: string) {
@@ -899,4 +906,35 @@ export function getNextLesson(unitId: string, lessonId: string) {
 
 export function allLessonsFlat() {
   return UNITS.flatMap((u) => u.lessons.map((l) => ({ unit: u, lesson: l })))
+}
+
+export type PathLevel = 1 | 2 | 3
+
+export const PATH_LEVELS: PathLevel[] = [1, 2, 3]
+
+export function unitsInLevel(level: PathLevel) {
+  return UNITS.filter((u) => u.level === level)
+}
+
+export function isLevelComplete(level: PathLevel, completedLessons: Record<string, boolean>) {
+  const units = unitsInLevel(level)
+  if (!units.length) return false
+  for (const u of units) {
+    for (const l of u.lessons) {
+      if (!completedLessons[`${u.id}:${l.id}`]) return false
+    }
+  }
+  return true
+}
+
+export function isLevelUnlocked(level: PathLevel, completedLessons: Record<string, boolean>) {
+  if (level <= 1) return true
+  if (level === 2) return isLevelComplete(1, completedLessons)
+  return isLevelComplete(2, completedLessons)
+}
+
+export function isUnitAccessible(unitId: string, completedLessons: Record<string, boolean>) {
+  const unit = getUnit(unitId)
+  if (!unit) return false
+  return isLevelUnlocked(unit.level, completedLessons)
 }

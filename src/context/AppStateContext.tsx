@@ -8,7 +8,12 @@ import {
   type ReactNode,
 } from 'react'
 import type { AchievementId } from '@/data/achievements'
-import { UNITS } from '@/data/curriculum'
+import {
+  UNITS,
+  isLevelUnlocked as curriculumIsLevelUnlocked,
+  isUnitAccessible as curriculumIsUnitAccessible,
+  type PathLevel,
+} from '@/data/curriculum'
 
 const STORAGE_KEY = 'inquiry_path_v1'
 const LEGACY_STORAGE_KEY = 'duligo_v1'
@@ -198,6 +203,8 @@ type AppStateContextValue = {
   dailyGoalMet: boolean
   lessonsTodayCount: number
   totalXp: number
+  isLevelUnlocked: (level: PathLevel) => boolean
+  isUnitAccessible: (unitId: string) => boolean
 }
 
 const AppStateContext = createContext<AppStateContextValue | null>(null)
@@ -302,6 +309,16 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     return stored.lessonsTodayDate === today && stored.lessonsTodayCount >= 1
   }, [stored.lessonsTodayDate, stored.lessonsTodayCount])
 
+  const isLevelUnlocked = useCallback(
+    (level: PathLevel) => curriculumIsLevelUnlocked(level, stored.completedLessons),
+    [stored.completedLessons],
+  )
+
+  const isUnitAccessible = useCallback(
+    (unitId: string) => curriculumIsUnitAccessible(unitId, stored.completedLessons),
+    [stored.completedLessons],
+  )
+
   const value = useMemo<AppStateContextValue>(
     () => ({
       seenIntro: stored.seenIntro,
@@ -320,6 +337,8 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       dailyGoalMet,
       lessonsTodayCount: stored.lessonsTodayCount,
       totalXp: typeof stored.totalXp === 'number' ? stored.totalXp : 0,
+      isLevelUnlocked,
+      isUnitAccessible,
     }),
     [
       stored.seenIntro,
@@ -338,6 +357,8 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
       unitCrownLevel,
       pathProgress,
       dailyGoalMet,
+      isLevelUnlocked,
+      isUnitAccessible,
     ],
   )
 

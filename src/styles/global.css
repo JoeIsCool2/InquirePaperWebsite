@@ -1121,6 +1121,48 @@ a:hover {
   white-space: nowrap;
 }
 
+.path-level-section {
+  margin-bottom: var(--space-xl);
+}
+
+.path-level-header {
+  margin-bottom: var(--space-md);
+}
+
+.path-level-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  margin: 0 0 0.25rem;
+}
+
+.path-level-lock,
+.path-level-meta {
+  margin: 0;
+}
+
+.path-node--locked {
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
+.path-node--locked:hover {
+  transform: none;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.path-node--locked .path-node-body h2 {
+  color: var(--color-muted);
+}
+
+.path-node-cta--muted {
+  opacity: 0.65;
+}
+
+.level-gate-card {
+  margin-top: var(--space-md);
+  max-width: 36rem;
+}
+
 .path-timeline {
   list-style: none;
   margin: 0;

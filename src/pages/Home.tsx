@@ -54,7 +54,10 @@ export default function Home() {
         </article>
         <article className="feature-tile glass">
           <h2>Mapped to the essay</h2>
-          <p>Each unit mirrors the essay’s section spine, with reading tie-ins on teaching cards.</p>
+          <p>
+            Level 1 mirrors the essay’s section spine; later levels build on the same ideas with more practice—reading tie-ins
+            stay on teaching cards.
+          </p>
         </article>
         <article className="feature-tile glass">
           <h2>5–8 minute lessons</h2>

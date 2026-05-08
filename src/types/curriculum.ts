@@ -99,6 +99,8 @@ export type Lesson = {
 
 export type Unit = {
   id: string
+  /** Path tier: Level 2 unlocks after all Level 1 lessons; Level 3 after all Level 2. */
+  level: 1 | 2 | 3
   title: string
   subtitle: string
   lessons: Lesson[]
