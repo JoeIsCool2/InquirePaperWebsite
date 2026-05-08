@@ -11,7 +11,6 @@ import TeachStepView from '@/components/TeachStepView'
 import TriageStepView from '@/components/TriageStepView'
 import { useAppState } from '@/context/AppStateContext'
 import { getNextLesson } from '@/data/curriculum'
-import { depthLabelAt, stepsAtDepth, type DepthLevel } from '@/data/lessonDepthKeys'
 import { useFeedbackSound } from '@/hooks/useFeedbackSound'
 import type { Lesson, LessonStep, Unit } from '@/types/curriculum'
 import { starsFromMistakes, xpFromStars } from '@/utils/lessonScore'
@@ -19,7 +18,6 @@ import { starsFromMistakes, xpFromStars } from '@/utils/lessonScore'
 type Props = {
   unit: Unit
   lesson: Lesson
-  depth: DepthLevel
 }
 
 type StepHandlers = {
@@ -48,8 +46,8 @@ function LessonStepBody({ step, handlers }: { step: LessonStep; handlers: StepHa
   }
 }
 
-export default function LessonPlayer({ unit, lesson, depth }: Props) {
-  const { completeLesson, addXp, isDepthComplete } = useAppState()
+export default function LessonPlayer({ unit, lesson }: Props) {
+  const { completeLesson, addXp, isLessonComplete, completedLessons } = useAppState()
   const sound = useFeedbackSound()
   const [stepIndex, setStepIndex] = useState(0)
   const [solved, setSolved] = useState(false)
@@ -60,11 +58,10 @@ export default function LessonPlayer({ unit, lesson, depth }: Props) {
   const finishedRef = useRef(false)
   const mainRef = useRef<HTMLDivElement>(null)
 
-  const steps = stepsAtDepth(lesson, depth)
+  const steps = lesson.steps
   const step = steps[stepIndex]
   const progress = (stepIndex + 1) / steps.length
   const nextLesson = getNextLesson(unit.id, lesson.id)
-  const depthLabel = depthLabelAt(lesson, depth)
 
   const closeComplete = useCallback(() => setShowComplete(false), [])
 
@@ -85,12 +82,12 @@ export default function LessonPlayer({ unit, lesson, depth }: Props) {
     setMistakes(0)
     setLastXpEarned(0)
     finishedRef.current = false
-  }, [lesson.id, depth])
+  }, [lesson.id])
 
   useEffect(() => {
-    const st = steps[stepIndex]
+    const st = lesson.steps[stepIndex]
     setSolved(st?.type === 'teach')
-  }, [lesson.id, depth, steps, stepIndex])
+  }, [lesson.id, lesson.steps, stepIndex])
 
   useEffect(() => {
     const el = mainRef.current
@@ -110,13 +107,10 @@ export default function LessonPlayer({ unit, lesson, depth }: Props) {
 
     if (!finishedRef.current) {
       finishedRef.current = true
-      const wasAlreadyDoneThisDepth = isDepthComplete(unit.id, lesson.id, depth)
-      const unitDoneL1 =
-        depth === 1 &&
-        !wasAlreadyDoneThisDepth &&
-        unit.lessons.every((l) => l.id === lesson.id || isDepthComplete(unit.id, l.id, 1))
-
-      if (depth === 1 && !wasAlreadyDoneThisDepth) {
+      const wasAlreadyDone = isLessonComplete(unit.id, lesson.id)
+      const nextCompleted = { ...completedLessons, [`${unit.id}:${lesson.id}`]: true }
+      const unitDone = unit.lessons.every((l) => nextCompleted[`${unit.id}:${l.id}`])
+      if (!wasAlreadyDone) {
         const stars = starsFromMistakes(mistakes)
         const xpEarned = xpFromStars(stars)
         setLastXpEarned(xpEarned)
@@ -124,10 +118,8 @@ export default function LessonPlayer({ unit, lesson, depth }: Props) {
       } else {
         setLastXpEarned(0)
       }
-
-      completeLesson(unit.id, lesson.id, depth)
-
-      if (unitDoneL1) {
+      completeLesson(unit.id, lesson.id)
+      if (unitDone && !wasAlreadyDone) {
         setCelebrate(true)
         sound('complete')
         window.setTimeout(() => setCelebrate(false), 1400)
@@ -143,11 +135,8 @@ export default function LessonPlayer({ unit, lesson, depth }: Props) {
       <LessonCompletePanel
         open={showComplete}
         unitId={unit.id}
-        lessonId={lesson.id}
         lessonTitle={lesson.title}
         unitTitle={unit.title}
-        depth={depth}
-        depthLabel={depthLabel}
         mistakes={mistakes}
         xpEarned={lastXpEarned}
         nextLessonId={nextLesson?.id}
@@ -157,7 +146,7 @@ export default function LessonPlayer({ unit, lesson, depth }: Props) {
       <div ref={mainRef} className="lesson-player-main">
         <div className="lesson-meta-row">
           <span className="text-muted text-small">
-            Level {depth}/3 · Step {stepIndex + 1} / {steps.length}
+            Step {stepIndex + 1} / {steps.length}
           </span>
           {lesson.estimatedMinutes ? (
             <span className="text-muted text-small">~{lesson.estimatedMinutes} min</span>
@@ -189,7 +178,7 @@ export default function LessonPlayer({ unit, lesson, depth }: Props) {
         {showContinue ? (
           <div className="lesson-footer">
             <button type="button" className="btn btn-primary btn-lg" onClick={goNext}>
-              {stepIndex < steps.length - 1 ? 'Continue' : 'Finish level'}
+              {stepIndex < steps.length - 1 ? 'Continue' : 'Finish lesson'}
             </button>
           </div>
         ) : null}
