@@ -54,7 +54,7 @@ export default function CedSortStepView({ step, onSolved, onMistake }: Props) {
     <div className="card glass step-card">
       <h3 className="step-title">{step.prompt}</h3>
       <p className="ced-hint">
-        Claim = what the paper argues. Evidence = what a source shows. Interpretation = the “so what?” you draw from
+        Claim = what the essay argues. Evidence = what a source shows. Interpretation = the “so what?” you draw from
         evidence.
       </p>
       <div className="match-grid" style={{ marginTop: '0.75rem' }}>

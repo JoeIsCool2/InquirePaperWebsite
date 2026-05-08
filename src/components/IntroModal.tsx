@@ -22,8 +22,9 @@ export default function IntroModal() {
       >
         <h2 id="intro-title">Welcome to Inquiry Path</h2>
         <p>
-          This is a short, Duolingo-style companion to an inquiry paper about <strong>AI and jobs</strong>.
-          You will move through bite-size steps: quick teaching cards and interactive checks.
+          This is a short, Duolingo-style companion to a public inquiry essay on <strong>AI and jobs</strong>—for anyone
+          learning the argument, not just the writer. You will move through bite-size steps: quick teaching cards and
+          interactive checks.
         </p>
         <Disclaimer />
         <p style={{ marginBottom: '1rem', color: 'var(--color-muted)', fontSize: '0.95rem' }}>

@@ -8,7 +8,7 @@ export default function TeachStepView({ step }: { step: TeachStep }) {
       <p className="step-body">{step.body}</p>
       {step.paperRef ? (
         <p className="paper-ref">
-          <strong>Inquiry paper:</strong> {step.paperRef}
+          <strong>Essay tie-in:</strong> {step.paperRef}
         </p>
       ) : null}
       {step.glossaryTerms?.length ? <GlossaryChips terms={step.glossaryTerms} /> : null}

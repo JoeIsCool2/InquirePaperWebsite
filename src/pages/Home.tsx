@@ -15,8 +15,8 @@ export default function Home() {
             <p className="kicker">Expository inquiry · companion app</p>
             <h1 className="hero-title">Learn the argument in short, satisfying reps.</h1>
             <p className="lead hero-lead">
-              Inquiry Path walks through <strong>AI and jobs</strong> the way your paper does—claims, sources, limits, and
-              vocabulary—using interactions you cannot get from a PDF alone.
+              Inquiry Path walks through <strong>AI and jobs</strong> the same way the source essay does—claims, sources,
+              limits, and vocabulary—with interactions you cannot get from a PDF alone.
             </p>
             <div className="hero-cta">
               <Link className="btn btn-primary btn-lg" to="/path">
@@ -53,8 +53,8 @@ export default function Home() {
           <p>Sort claims, triage sources, and run scenarios—built for the web, not a static essay.</p>
         </article>
         <article className="feature-tile glass">
-          <h2>Mapped to your paper</h2>
-          <p>Each unit mirrors your draft’s spine, with “inquiry paper” callouts on teaching cards.</p>
+          <h2>Mapped to the essay</h2>
+          <p>Each unit mirrors the essay’s section spine, with reading tie-ins on teaching cards.</p>
         </article>
         <article className="feature-tile glass">
           <h2>5–8 minute lessons</h2>
@@ -65,7 +65,7 @@ export default function Home() {
       <div className="card glass">
         <h2 className="section-title">Audience &amp; purpose</h2>
         <p>
-          Built for classmates, teachers, and curious readers. After ~10 minutes you should be able to{' '}
+          Built for students, teachers, and curious readers. After ~10 minutes you should be able to{' '}
           <strong>trace the thesis</strong>, name <strong>which sources support which moves</strong>, and use the{' '}
           <strong>glossary</strong> confidently.
         </p>

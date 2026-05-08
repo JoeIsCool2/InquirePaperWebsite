@@ -35,7 +35,7 @@ export default function Layout() {
               <IconLamp className="brand-lamp" />
               <span className="brand-mark">Inquiry Path</span>
             </span>
-            <span className="brand-sub">Inquiry companion · AI &amp; jobs</span>
+            <span className="brand-sub">AI &amp; jobs · inquiry companion</span>
           </Link>
           <div className="header-meta">
             <span

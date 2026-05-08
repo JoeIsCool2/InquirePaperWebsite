@@ -17,14 +17,14 @@ export const UNITS: Unit[] = [
             type: 'teach',
             title: 'Technology needs people—until it doesn’t',
             body:
-              'In the inquiry paper, the Genie is powerful but stuck without a human partner. That mirrors an older story about tech: tools amplify people, but they still need human direction. The paper argues AI is beginning to change that balance—so the urgent social question becomes work: who gains, who loses, and how fast.',
+              'In the inquiry essay, the Genie is powerful but stuck without a human partner. That mirrors an older story about tech: tools amplify people, but they still need human direction. The essay argues AI is beginning to change that balance—so the urgent social question becomes work: who gains, who loses, and how fast.',
             paperRef: 'Opening & personal stake (iOS class / eight-month shift)',
             glossaryTerms: ['augmentation'],
           },
           {
             id: 's2',
             type: 'mcq',
-            prompt: 'In the paper’s framing, what does the lamp mainly represent?',
+            prompt: 'In the essay’s framing, what does the lamp mainly represent?',
             options: [
               { id: 'a', label: 'A physical object from a movie' },
               { id: 'b', label: 'The limit on power without human partnership' },
@@ -33,23 +33,23 @@ export const UNITS: Unit[] = [
             correctId: 'b',
             hint: 'Think about what the Genie cannot do alone.',
             explain:
-              'The lamp is the constraint: huge capability still depends on a human “handler.” The paper uses that to introduce why AI’s growing autonomy matters.',
+              'The lamp is the constraint: huge capability still depends on a human “handler.” The essay uses that to introduce why AI’s growing autonomy matters.',
           },
           {
             id: 's3',
             type: 'teach',
             title: 'Why “jobs” is the urgent lens',
             body:
-              'Big fears about AI range from misinformation to superintelligence. Those matter—but the paper focuses on employment because work is where most people meet technology in daily life. Shifts in hiring, wages, and task design show up as rent, stress, and opportunity long before sci‑fi scenarios do.',
+              'Big fears about AI range from misinformation to superintelligence. Those matter—but the essay focuses on employment because work is where most people meet technology in daily life. Shifts in hiring, wages, and task design show up as rent, stress, and opportunity long before sci‑fi scenarios do.',
             paperRef: 'Thesis pivot: jobs as the most urgent issue',
           },
           {
             id: 's4',
             type: 'sort',
-            prompt: 'Sort each line into the bucket that fits the paper’s emphasis.',
+            prompt: 'Sort each line into the bucket that fits the essay’s emphasis.',
             buckets: [
-              { id: 'urgent', label: 'Paper treats as most urgent (for now)' },
-              { id: 'real', label: 'Real concern, but not the paper’s main focus' },
+              { id: 'urgent', label: 'Essay treats as most urgent (for now)' },
+              { id: 'real', label: 'Real concern, but not the essay’s main focus' },
             ],
             items: [
               { id: 'i1', text: 'Which roles are automated or reshaped first', bucketId: 'urgent' },
@@ -58,7 +58,7 @@ export const UNITS: Unit[] = [
               { id: 'i4', text: 'Every possible sci‑fi risk simultaneously', bucketId: 'real' },
             ],
             explain:
-              'The paper doesn’t dismiss long‑run risks; it prioritizes labor impacts you can already see in policy, hiring, and training.',
+              'The essay doesn’t dismiss long‑run risks; it prioritizes labor impacts you can already see in policy, hiring, and training.',
           },
           {
             id: 's5',
@@ -96,13 +96,13 @@ export const UNITS: Unit[] = [
               { id: 'a', label: 'Replace your teacher’s grading rubric' },
               {
                 id: 'b',
-                label: 'Summarize the paper’s main reasons and how key sources support them',
+                label: 'Summarize the essay’s main reasons and how key sources support them',
               },
               { id: 'c', label: 'Prove exactly how many jobs will exist in 2035' },
             ],
             correctId: 'b',
             explain:
-              'An inquiry paper argues with evidence; it doesn’t deliver certainty about the future.',
+              'An inquiry essay argues with evidence; it doesn’t deliver certainty about the future.',
           },
           {
             id: 's3',
@@ -122,7 +122,7 @@ export const UNITS: Unit[] = [
               },
               {
                 id: 'fair2',
-                text: 'Some sources disagree about pace; the paper weighs competing views.',
+                text: 'Some sources disagree about pace; the essay weighs competing views.',
                 kind: 'fair',
               },
             ],
@@ -144,7 +144,7 @@ export const UNITS: Unit[] = [
             title: 'Three buckets writers use',
             body:
               'Strong inquiry separates what you are arguing (claim), what a source actually establishes (evidence), and what you conclude from that evidence in your own voice (interpretation). Mixing them up is how arguments accidentally overclaim.',
-            paperRef: 'Discourse basics (used across the paper)',
+            paperRef: 'Discourse basics (used across the essay)',
             glossaryTerms: ['interpretation'],
           },
           {
@@ -154,7 +154,7 @@ export const UNITS: Unit[] = [
             items: [
               {
                 id: 'i1',
-                text: 'The paper treats near-term job impacts as the most urgent lens.',
+                text: 'The essay treats near-term job impacts as the most urgent lens.',
                 bucketId: 'claim',
               },
               {
@@ -169,14 +169,14 @@ export const UNITS: Unit[] = [
               },
             ],
             explain:
-              'Evidence cites what a source measured; interpretation explains why it matters for the argument; claim states the paper’s position.',
+              'Evidence cites what a source measured; interpretation explains why it matters for the argument; claim states the essay’s position.',
           },
           {
             id: 's3',
             type: 'scenario',
             setup:
               'A retail worker spends most shifts answering the same fifteen questions with scripts. Management pilots an AI assistant that drafts replies; humans still approve sends.',
-            prompt: 'In the paper’s pattern language, this situation is closest to:',
+            prompt: 'In the essay’s pattern language, this situation is closest to:',
             options: [
               { id: 'a', label: 'Pure displacement overnight—no humans involved' },
               { id: 'b', label: 'Task shift: repetitive information work is partially automated in slices' },
@@ -226,18 +226,18 @@ export const UNITS: Unit[] = [
           {
             id: 's2',
             type: 'match',
-            prompt: 'Match the idea to the voice the paper uses.',
+            prompt: 'Match the idea to the voice the essay uses.',
             left: [
               { id: 'l1', text: '“Replace all jobs” talk can be strategic hype' },
               { id: 'l2', text: 'AI can still be a serious workplace tool' },
             ],
             right: [
               { id: 'r1', text: 'Fishkin' },
-              { id: 'r2', text: 'The paper’s author (both can be true)' },
+              { id: 'r2', text: 'The essay’s author (both can be true)' },
             ],
             answer: { l1: 'r1', l2: 'r2' },
             explain:
-              'Fishkin targets exaggerated claims; the paper still treats AI as transformative—but asks what we can actually show with evidence.',
+              'Fishkin targets exaggerated claims; the essay still treats AI as transformative—but asks what we can actually show with evidence.',
           },
           {
             id: 's3',
@@ -264,7 +264,7 @@ export const UNITS: Unit[] = [
             type: 'teach',
             title: 'Headline percentages',
             body:
-              'Prestianni summarizes forecasts that a large share of “current U.S. jobs” could face automation pressure by 2030. The paper stresses wording: “current jobs” is not the same as “every worker unemployed tomorrow.”',
+              'Prestianni summarizes forecasts that a large share of “current U.S. jobs” could face automation pressure by 2030. The essay stresses wording: “current jobs” is not the same as “every worker unemployed tomorrow.”',
             paperRef: 'Prestianni (National University blog)',
             glossaryTerms: ['automation'],
           },
@@ -273,13 +273,13 @@ export const UNITS: Unit[] = [
             type: 'teach',
             title: 'Gains vs losses (one snapshot)',
             body:
-              'Ostertag (ITIF) compares AI‑related job creation and displacement figures for a recent year. The paper uses this to show a pattern: new roles appear even as some tasks shrink—but asks whether AI’s curve will follow older tech waves.',
+              'Ostertag (ITIF) compares AI‑related job creation and displacement figures for a recent year. The essay uses this to show a pattern: new roles appear even as some tasks shrink—but asks whether AI’s curve will follow older tech waves.',
             paperRef: 'Ostertag (ITIF)',
           },
           {
             id: 's3',
             type: 'mcq',
-            prompt: 'Why does the paper pair “jobs created” with “jobs lost”?',
+            prompt: 'Why does the essay pair “jobs created” with “jobs lost”?',
             options: [
               { id: 'a', label: 'To pretend no one is harmed' },
               { id: 'b', label: 'To show labor change is rearrangement, not a single headline number' },
@@ -294,7 +294,7 @@ export const UNITS: Unit[] = [
             type: 'teach',
             title: 'Yale Budget Lab: slow occupational mix shifts',
             body:
-              'The paper cites Yale Budget Lab work suggesting the internet era did not instantly rewrite the occupational mix; change accumulated gradually. The analogy is cautionary: big narratives can outrun measured shifts—yet AI may still differ in speed and scope.',
+              'The essay cites Yale Budget Lab work suggesting the internet era did not instantly rewrite the occupational mix; change accumulated gradually. The analogy is cautionary: big narratives can outrun measured shifts—yet AI may still differ in speed and scope.',
             paperRef: 'Yale Budget Lab labor market note',
             glossaryTerms: ['occupational mix'],
           },
@@ -390,7 +390,7 @@ export const UNITS: Unit[] = [
             ],
             correctSourceId: 'snapshot',
             explain:
-              'The paper’s caution is epistemic: strong conclusions need proportional evidence—not vibes.',
+              'The essay’s caution is epistemic: strong conclusions need proportional evidence—not vibes.',
           },
           {
             id: 's4',
@@ -402,7 +402,7 @@ export const UNITS: Unit[] = [
               { id: 'c', label: 'Proof that nurses will be automated next week' },
             ],
             correctId: 'b',
-            explain: 'Lists summarize common discussions; your paper stresses patterns, not fate.',
+            explain: 'Lists summarize common discussions; the essay stresses patterns, not fate.',
           },
         ],
       },
@@ -424,7 +424,7 @@ export const UNITS: Unit[] = [
             type: 'teach',
             title: 'From tool to self-training loop',
             body:
-              'The paper cites reporting on models that generate their own practice problems (e.g., “Absolute Zero Reasoner” style ideas). If less human labeling is required for improvement, the “Genie needs a master” story weakens—raising stakes for labor and safety.',
+              'The essay cites reporting on models that generate their own practice problems (e.g., “Absolute Zero Reasoner” style ideas). If less human labeling is required for improvement, the “Genie needs a master” story weakens—raising stakes for labor and safety.',
             paperRef: 'The PyCoach / Medium reporting',
           },
           {
@@ -446,7 +446,7 @@ export const UNITS: Unit[] = [
           {
             id: 's3',
             type: 'sort',
-            prompt: 'Sort these as “tool framing” vs “autonomy framing” as the paper uses them.',
+            prompt: 'Sort these as “tool framing” vs “autonomy framing” as the essay uses them.',
             buckets: [
               { id: 'tool', label: 'Tool framing (human directs)' },
               { id: 'auto', label: 'Autonomy framing (less human direction)' },
@@ -457,7 +457,7 @@ export const UNITS: Unit[] = [
               { id: 'i3', text: 'Spreadsheet formulas recalc when a human enters data', bucketId: 'tool' },
             ],
             explain:
-              'The paper uses both frames to explain why “just a tool” may be incomplete as a long-run description.',
+              'The essay uses both frames to explain why “just a tool” may be incomplete as a long-run description.',
           },
         ],
       },
@@ -478,7 +478,7 @@ export const UNITS: Unit[] = [
           {
             id: 's2',
             type: 'mcq',
-            prompt: 'The paper uses cancer research mainly to show:',
+            prompt: 'The essay uses cancer research mainly to show:',
             options: [
               { id: 'a', label: 'Hospitals never need doctors' },
               { id: 'b', label: 'AI can tackle hard, high-stakes problems—so labor impacts may be broad' },
@@ -535,7 +535,7 @@ export const UNITS: Unit[] = [
             ],
             correctId: 'b',
             explain:
-              'The paper’s pattern lens is about task structure. Junior, ticket-shaped coding can still be augmented heavily—even with a human reviewer.',
+              'The essay’s pattern lens is about task structure. Junior, ticket-shaped coding can still be augmented heavily—even with a human reviewer.',
           },
           {
             id: 's2',
@@ -554,12 +554,12 @@ export const UNITS: Unit[] = [
               },
               {
                 id: 'i3',
-                text: 'The paper urges proportional claims: demos are not the same as deployed outcomes.',
+                text: 'The essay urges proportional claims: demos are not the same as deployed outcomes.',
                 bucketId: 'claim',
               },
             ],
             explain:
-              'Evidence names what sources say; interpretation draws a “so what” (here, an overclaim); claim states the paper’s stance on careful language.',
+              'Evidence names what sources say; interpretation draws a “so what” (here, an overclaim); claim states the essay’s stance on careful language.',
           },
           {
             id: 's3',
@@ -581,7 +581,7 @@ export const UNITS: Unit[] = [
   {
     id: 'u4',
     title: 'Labor patterns',
-    subtitle: 'Which jobs look exposed—and what patterns say (your synthesis)',
+    subtitle: 'Which jobs look exposed—and what patterns say (the synthesis)',
     lessons: [
       {
         id: 'u4-l1',
@@ -594,14 +594,14 @@ export const UNITS: Unit[] = [
             type: 'teach',
             title: 'Lists are maps, not sentences',
             body:
-              'Matthew Urwin (Built In) summarizes roles often discussed as AI-exposed (e.g., customer service, some coding, content writing) and roles often considered more resilient (e.g., nursing, teaching, therapy). The paper treats these as starting points for pattern thinking—not fate.',
+              'Matthew Urwin (Built In) summarizes roles often discussed as AI-exposed (e.g., customer service, some coding, content writing) and roles often considered more resilient (e.g., nursing, teaching, therapy). The essay treats these as starting points for pattern thinking—not fate.',
             paperRef: 'Urwin (Built In)',
             glossaryTerms: ['routine work'],
           },
           {
             id: 's2',
             type: 'mcq',
-            prompt: 'The paper’s “pattern” synthesis (without treating any chatbot as a co-author) stresses:',
+            prompt: 'The essay’s “pattern” synthesis (without treating any chatbot as a co-author) stresses:',
             options: [
               { id: 'a', label: 'Only jobs with zero typing are safe' },
               {
@@ -628,7 +628,7 @@ export const UNITS: Unit[] = [
             ],
             answer: { l1: 'r1', l2: 'r2' },
             explain:
-              'Reality is messier than two buckets; the paper uses patterns to think, not to label people.',
+              'Reality is messier than two buckets; the essay uses patterns to think, not to label people.',
           },
         ],
       },
@@ -643,16 +643,16 @@ export const UNITS: Unit[] = [
             type: 'teach',
             title: 'Meaningless tasks and secret doubt',
             body:
-              'Margaret Talbot describes many workers performing tasks they suspect may not need doing—boredom as a “deficit in meaning.” The paper asks a humane question: if AI removes some hollow tasks, what replaces income, dignity, and structure?',
+              'Margaret Talbot describes many workers performing tasks they suspect may not need doing—boredom as a “deficit in meaning.” The essay asks a humane question: if AI removes some hollow tasks, what replaces income, dignity, and structure?',
             paperRef: 'Talbot (The New Yorker)',
           },
           {
             id: 's2',
             type: 'sort',
-            prompt: 'Sort: is the paper mainly praising, warning, or both?',
+            prompt: 'Sort: is the essay mainly praising, warning, or both?',
             buckets: [
-              { id: 'praise', label: 'Possible upside the paper names' },
-              { id: 'warn', label: 'Risk or tension the paper names' },
+              { id: 'praise', label: 'Possible upside named in the essay' },
+              { id: 'warn', label: 'Risk or tension named in the essay' },
             ],
             items: [
               { id: 'i1', text: 'Less time in “dullsville” meaningless tasks', bucketId: 'praise' },
@@ -684,7 +684,7 @@ export const UNITS: Unit[] = [
             ],
             correctId: 'a',
             explain:
-              'The paper uses “resilient” carefully: some tasks may still change, but care work is less like a pure rules engine.',
+              'The essay uses “resilient” carefully: some tasks may still change, but care work is less like a pure rules engine.',
           },
           {
             id: 's2',
@@ -705,7 +705,7 @@ export const UNITS: Unit[] = [
             id: 's3',
             type: 'triage',
             claim: 'Some workers experience their tasks as a “deficit in meaning” (boredom), not only a wage problem.',
-            prompt: 'Which author-family best matches that humane texture in the paper?',
+            prompt: 'Which author-family best matches that humane texture in the essay?',
             sources: [
               {
                 id: 'talbot',
@@ -747,7 +747,7 @@ export const UNITS: Unit[] = [
             type: 'teach',
             title: 'Not only replacement—recomposition',
             body:
-              'Georgieff & Hyee offer cross-country framing: AI doesn’t only replace tasks; it shifts which tasks are demanded—often toward high-level reasoning and social interaction. That supports the paper’s “evolution of jobs” thesis.',
+              'Georgieff & Hyee offer cross-country framing: AI doesn’t only replace tasks; it shifts which tasks are demanded—often toward high-level reasoning and social interaction. That supports the essay’s “evolution of jobs” thesis.',
             paperRef: 'Georgieff & Hyee (Frontiers)',
             glossaryTerms: ['interpretation'],
           },
@@ -777,7 +777,7 @@ export const UNITS: Unit[] = [
             type: 'teach',
             title: 'TIME: a human-centric economy',
             body:
-              'Drago & Laine argue automating routine work could push society to value creativity and care work more explicitly—if policy and training catch up. The paper pairs this with Talbot: meaningful activity beats empty busyness.',
+              'Drago & Laine argue automating routine work could push society to value creativity and care work more explicitly—if policy and training catch up. The essay pairs this with Talbot: meaningful activity beats empty busyness.',
             paperRef: 'Drago & Laine (TIME)',
           },
           {
@@ -785,13 +785,13 @@ export const UNITS: Unit[] = [
             type: 'teach',
             title: 'Closing: still partners with the Genie',
             body:
-              'The paper returns to the lamp: “phenomenal cosmic powers” need human direction. The companion’s through-line is the same: hope is plausible when claims stay honest, transitions are planned for, and evidence leads.',
+              'The essay returns to the lamp: “phenomenal cosmic powers” need human direction. The companion’s through-line is the same: hope is plausible when claims stay honest, transitions are planned for, and evidence leads.',
             paperRef: 'Conclusion',
           },
           {
             id: 's3',
             type: 'mcq',
-            prompt: 'Which best matches the paper’s final stance?',
+            prompt: 'Which best matches the essay’s final stance?',
             options: [
               { id: 'a', label: 'Panic only—no upside' },
               { id: 'b', label: 'Hope-forward evolution of work, with real displacement risks' },
@@ -826,12 +826,12 @@ export const UNITS: Unit[] = [
               },
               {
                 id: 'i3',
-                text: 'The paper’s stance is hope-forward while acknowledging displacement and inequality risks.',
+                text: 'The essay’s stance is hope-forward while acknowledging displacement and inequality risks.',
                 bucketId: 'claim',
               },
             ],
             explain:
-              'Georgieff & Hyee / TIME-style arguments support recomposition; your claim states how cautiously optimistic the paper is.',
+              'Georgieff & Hyee / TIME-style arguments support recomposition; the claim states how cautiously optimistic the essay is.',
           },
           {
             id: 's2',
@@ -864,7 +864,7 @@ export const UNITS: Unit[] = [
             type: 'scenario',
             setup:
               'A city trains workers on AI tools for six months, pairs them with mentors, and tracks wage outcomes—not just headline layoffs.',
-            prompt: 'This matches the paper’s emphasis on:',
+            prompt: 'This matches the essay’s emphasis on:',
             options: [
               { id: 'a', label: 'Transitions and distribution—not only “will AI exist?”' },
               { id: 'b', label: 'Ignoring all downsides forever' },

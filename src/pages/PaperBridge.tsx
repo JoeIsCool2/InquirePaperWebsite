@@ -33,10 +33,10 @@ export default function PaperBridge() {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
       <div className="card glass">
         <p className="kicker">Bridge</p>
-        <h1>Your paper bridge</h1>
+        <h1>Paper bridge</h1>
         <p className="lead">
-          This page is the explicit link between the interactive path and the inquiry paper itself—what the paper argues,
-          how it is organized, and where to find full references.
+          This page links the interactive path to the inquiry essay itself—what the essay argues, how it is organized, and
+          where to find full references.
         </p>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem' }}>
           <Link className="btn btn-primary" to="/path">
@@ -51,7 +51,7 @@ export default function PaperBridge() {
       <div className="card glass">
         <h2>Thesis (in one place)</h2>
         <p>
-          The paper argues that AI is reshaping how work is structured: some tasks and roles will shrink or transform,
+          The essay argues that AI is reshaping how work is structured: some tasks and roles will shrink or transform,
           while new roles appear—but the pace, distribution, and meaning of that shift deserve careful evidence rather than
           pure hype or pure panic. The most urgent near-term question is <strong>jobs</strong>: who is affected, how
           transitions are managed, and what kinds of work remain deeply human.
@@ -62,7 +62,7 @@ export default function PaperBridge() {
       <div className="card glass">
         <h2>Section map</h2>
         <p className="lead" style={{ marginTop: 0 }}>
-          Each row matches a movement of the draft; Inquiry Path units follow the same spine.
+          Each row matches a movement of the essay; Inquiry Path units follow the same spine.
         </p>
         <ul style={{ margin: 0, paddingLeft: '1.1rem', color: 'var(--color-muted)' }}>
           {SECTIONS.map((s) => (
@@ -77,7 +77,8 @@ export default function PaperBridge() {
         <div className="card glass">
           <h2>References</h2>
           <p style={{ color: 'var(--color-muted)', fontSize: '0.95rem' }}>
-            Copy shown here matches the companion bibliography. Always verify links and dates against your final draft.
+            Copy shown here matches the companion bibliography. Always verify links and dates against the original sources
+            and the published essay.
           </p>
           <ol className="ref-list" style={{ color: 'var(--color-text)' }}>
             {REFERENCES.map((r, i) => (
